@@ -1,0 +1,110 @@
+/* Reset & globals */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #333;
+}
+ .grid-container {
+    display: grid;
+    grid-template-columns: minmax(16px, 1fr) repeat(6, 1fr) minmax(16px, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+    background-color: #fff;
+ }
+
+ .grid-main{
+    display:contents;
+ }
+
+ .grid-left{
+    grid-column: 2 / 4;
+ }
+
+ .grid-middle{
+    grid-column: 4 / 6;
+ }
+
+ .grid-right{
+    grid-column: 6 / 8;
+ }
+
+.grid-navigation,
+.grid-footer{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    grid-column: 2 / 8;
+    flex-wrap: wrap;
+    text-align: center;
+    font-weight: 500;
+    color: black;
+    background-color: #f1f3f8;
+}
+
+ .grid-left,
+ .grid-middle,
+ .grid-right{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+    font-weight: 500;
+    color: black;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: #f1f3f8;
+ }
+
+ h1{
+    font-family: 'Courier New', Courier, monospace;
+    color: #254391;
+ }
+
+  /* ===========================
+   2. TABLET (601px – 1024px)
+   =========================== */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Slim down to a 6-column layout */
+    .grid-container {
+      grid-template-columns: minmax(16px,1fr) repeat(4,1fr) minmax(16px,1fr);
+      gap: 15px;
+      padding: 15px 0;
+    }
+    /* Nav & footer now span columns 2–5 */
+    .grid-navigation,
+    .grid-footer {
+      grid-column: 2 / 6;
+    }
+    /* Keep left & middle side-by-side, drop right below */
+    .grid-left   { grid-column: 2 / 4; }
+    .grid-middle { grid-column: 4 / 6; }
+    .grid-right  { grid-column: 2 / 6; } /* full width of content area */
+  }
+
+  /* ===========================
+   3. PHONE (up to 600px)
+   =========================== */
+@media screen and (max-width: 600px) {
+    /* Collapse to one column */
+    .grid-container {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 10px 0;
+    }
+    /* Stack every section full-width and center their items */
+    .grid-navigation,
+    .grid-footer,
+    .grid-left,
+    .grid-middle,
+    .grid-right {
+      grid-column: 1 / -1;       /* span the single column */
+      flex-direction: column;    /* stack flex items vertically */
+      text-align: center;
+    }
+  }
+  
